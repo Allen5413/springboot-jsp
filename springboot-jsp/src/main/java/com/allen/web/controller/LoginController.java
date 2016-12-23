@@ -7,7 +7,7 @@ import com.allen.entity.basic.Resource;
 import com.allen.entity.user.User;
 //import com.allen.service.basic.menu.FindMenuByIdService;
 //import com.allen.service.basic.resource.FindResourceByUserIdService;
-//import com.allen.service.user.user.LoginUserService;
+import com.allen.service.user.user.LoginUserService;
 import com.allen.util.DateUtil;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -27,8 +27,8 @@ import java.util.Map;
 @Controller
 public class LoginController {
 
-//    @javax.annotation.Resource
-//    private LoginUserService loginUserService;
+    @javax.annotation.Resource
+    private LoginUserService loginUserService;
 //    @javax.annotation.Resource
 //    private FindResourceByUserIdService findResourceByUserIdService;
 //    @javax.annotation.Resource
@@ -45,7 +45,7 @@ public class LoginController {
                             @RequestParam("pwd")String pwd,
                             HttpServletRequest request)throws Exception{
         JSONObject jsonObject = new JSONObject();
-        User user = null;//loginUserService.login(loginName, pwd);
+        User user = loginUserService.login(loginName, pwd);
         if(null != user){
             this.setSession(request, user.getId(), user.getLoginName(), user.getName());
             jsonObject.put("state", 0);

@@ -30,13 +30,13 @@
         "pwd":pwd
       };
       $.ajax({
-        url:"${pageContext.request.contextPath}/loginUser/login.htm",
+        url:"${pageContext.request.contextPath}/login.json",
         method : 'POST',
         async:false,
         data:params,
         success:function(data){
-          if(data.msg == "success"){
-            location.href = "${pageContext.request.contextPath}/index/main.htm";
+          if(data.state == "0"){
+            location.href = "${pageContext.request.contextPath}/index/main.html";
           }else {
             $("#msg").html(data.msg);
           }
@@ -63,6 +63,9 @@
             </div>
             <div class="am-form-group">
               <input type="password" class="" id="pwd" name="pwd" placeholder="请输入密码" style="width: 300px;" onfocus="$(this).css('color', '#fff');">
+            </div>
+            <div class="am-form-group">
+              <span id="msg" style="color: #f60; font-weight: bold; font-size: 18px;"></span>
             </div>
             <p><button type="button" id="loginBtn" class="am-btn am-btn-default" onclick="sub()" style="width: 300px;">登&nbsp;&nbsp;录</button></p>
           </center>
