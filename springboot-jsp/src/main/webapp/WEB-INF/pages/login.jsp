@@ -36,7 +36,7 @@
         data:params,
         success:function(data){
           if(data.state == "0"){
-            location.href = "${pageContext.request.contextPath}/index/main.html";
+            location.href = "${pageContext.request.contextPath}/index.html";
           }else {
             $("#msg").html(data.msg);
           }
@@ -56,7 +56,7 @@
         <fieldset>
           <center>
             <div class="am-form-group" style="color: #ffffff; text-align: center; font-size: 30px;">
-              欢迎登录Allen系统管理后台
+              欢迎登录${name}系统管理后台
             </div>
             <div class="am-form-group">
               <input type="text" class="" id="loginName" name="loginName" placeholder="请输入用户名" style="width: 300px;" onfocus="$(this).css('color', '#fff');">
