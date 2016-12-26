@@ -24,13 +24,13 @@ public class FindMenuPageDaoImpl extends BaseQueryDao implements FindPageByWhere
         menuPageInfo.setCurrentPage(pageInfo.getCurrentPage());
         menuPageInfo.setCountOfCurrentPage(pageInfo.getCountOfCurrentPage());
 
-        StringBuilder sql = new StringBuilder("FROM Menu where 1=1 ");
+        StringBuilder sql = new StringBuilder("FROM Menu m where 1=1 ");
         String name = paramsMap.get("name");
 
         List<Object> param = new ArrayList<Object>();
         if(!StringUtil.isEmpty(name)){
-            sql.append(" and name like ? ");
-            param.add("%"+name+"%");
+            sql.append(" and m.name = ? ");
+            param.add(name);
         }
         if(null != sortMap) {
             sql.append("order by ");

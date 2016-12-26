@@ -1,6 +1,6 @@
 package com.allen.service.basic.menu.impl;
 
-import com.allen.dao.basic.menu.MenuDAO;
+import com.allen.dao.basic.menu.MenuDao;
 import com.allen.entity.basic.Menu;
 import com.allen.service.basic.menu.FindMenuByIdService;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import javax.annotation.Resource;
 public class FindMenuByIdServiceImpl implements FindMenuByIdService {
 
     @Resource
-    private MenuDAO menuDAO;
+    private MenuDao menuDAO;
 
     @Override
     public Menu find(long id) throws Exception {

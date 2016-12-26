@@ -1,12 +1,16 @@
 package com.allen.dao;
 
+import com.allen.util.StringUtil;
 import org.hibernate.SQLQuery;
 import org.hibernate.Session;
 import org.springframework.util.Assert;
 
 import javax.persistence.Query;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -184,5 +188,139 @@ public class BaseQueryDao extends JapDynamicQueryDao {
 
         m.appendTail(sb);
         return sb.toString();
+    }
+
+    public PageInfo findPageByNativeSql(PageInfo pageInfo, String fields, String[] tableNames, Map<String, Object> paramsMap, String[] paramsIf, Map<String, Boolean> sortMap)throws Exception{
+        List<Object> paramsList = new ArrayList<Object>();
+        String sql = new String("from ");
+        for(int i=0; i<tableNames.length; i++){
+            sql += tableNames[i];
+            if(i == tableNames.length - 1){
+                sql += " ";
+            }else{
+                sql += ", ";
+            }
+        }
+        sql += "where 1=1 ";
+        if(null != paramsMap && 0 < paramsMap.size()){
+            int num= 0;
+            for (Object key : paramsMap.keySet()) {
+                Object value = paramsMap.get(key);
+                if(null != value && !StringUtil.isEmpty(value.toString())) {
+                    String paramIf = paramsIf[num];
+                    if("like".equals(paramIf)){
+                        sql += "and " + key + " like ? ";
+                    }else{
+                        sql += "and " + key + " = ? ";
+                    }
+                    paramsList.add(value);
+                }
+                num++;
+            }
+        }
+        if(null != sortMap) {
+            sql += "order by ";
+            int i = 0;
+            for (Iterator it = sortMap.keySet().iterator(); it.hasNext(); ) {
+                if(0 < i){
+                    sql += ",";
+                }
+                String key = it.next().toString();
+                sql += key + " " + (sortMap.get(key) ? "asc" : "desc");
+                i++;
+            }
+        }
+        this.pageSqlQueryByNativeSql(pageInfo, sql.toString(), fields, paramsList.toArray());
+        return pageInfo;
+    }
+
+    public PageInfo findPageByJpal(PageInfo pageInfo, String fields, String[] tableNames, Map<String, Object> paramsMap, String[] paramsIf, Map<String, Boolean> sortMap)throws Exception{
+        String sql = new String("select "+fields+" from ");
+        for(int i=0; i<tableNames.length; i++){
+            sql += tableNames[i];
+            if(i == tableNames.length - 1){
+                sql += " ";
+            }else{
+                sql += ", ";
+            }
+        }
+        sql += "where 1=1 ";
+        if(null != paramsMap && 0 < paramsMap.size()){
+            int num= 0;
+            for (Object key : paramsMap.keySet()) {
+                Object value = paramsMap.get(key);
+                if(null != value && !StringUtil.isEmpty(value.toString())) {
+                    if("java.lang.String".equals(value.getClass().getName())){
+                        value = "'"+value+"'";
+                    }
+                    String paramIf = paramsIf[num];
+                    if("like".equals(paramIf)){
+                        sql += "and " + key + " like " + value +" ";
+                    }else{
+                        sql += "and " + key + " = " + value +" ";
+                    }
+                }
+                num++;
+            }
+        }
+        if(null != sortMap) {
+            sql += "order by ";
+            int i = 0;
+            for (Iterator it = sortMap.keySet().iterator(); it.hasNext(); ) {
+                if(0 < i){
+                    sql += ",";
+                }
+                String key = it.next().toString();
+                sql += key + " " + (sortMap.get(key) ? "asc" : "desc");
+                i++;
+            }
+        }
+        this.pagedQueryByJpql(pageInfo, sql.toString(), null);
+        return pageInfo;
+    }
+
+    public PageInfo findPageByJpal(PageInfo pageInfo, String[] tableNames, Map<String, Object> paramsMap, String[] paramsIf, Map<String, Boolean> sortMap)throws Exception{
+        String sql = new String("from ");
+        for(int i=0; i<tableNames.length; i++){
+            sql += tableNames[i];
+            if(i == tableNames.length - 1){
+                sql += " ";
+            }else{
+                sql += ", ";
+            }
+        }
+        sql += "where 1=1 ";
+        if(null != paramsMap && 0 < paramsMap.size()){
+            int num= 0;
+            for (Object key : paramsMap.keySet()) {
+                Object value = paramsMap.get(key);
+                if(null != value && !StringUtil.isEmpty(value.toString())) {
+                    if("java.lang.String".equals(value.getClass().getName())){
+                        value = "'"+value+"'";
+                    }
+                    String paramIf = paramsIf[num];
+                    if("like".equals(paramIf)){
+                        sql += "and " + key + " like " + value +" ";
+                    }else{
+                        sql += "and " + key + " = " + value +" ";
+                    }
+                }
+                num++;
+            }
+        }
+        if(null != sortMap) {
+            sql += "order by ";
+            int i = 0;
+            for (Iterator it = sortMap.keySet().iterator(); it.hasNext(); ) {
+                if(0 < i){
+                    sql += ",";
+                }
+                String key = it.next().toString();
+                sql += key + " " + (sortMap.get(key) ? "asc" : "desc");
+                i++;
+            }
+        }
+        this.pagedQueryByJpql(pageInfo, sql.toString(), null);
+        return pageInfo;
     }
 }
