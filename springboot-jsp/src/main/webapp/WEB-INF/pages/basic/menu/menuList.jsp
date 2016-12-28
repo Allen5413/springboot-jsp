@@ -56,20 +56,20 @@
 <%@ include file="../../common/page.jsp"%>
 <script>
   function edit(id){
-    var url = '${pageContext.request.contextPath}/editMenu/openEditMenuPage.htm?id='+id;
+    var url = '${pageContext.request.contextPath}/editMenu/open.htm?id='+id;
     app.openDialog(url, '编辑菜单', 600, 0.3, function(index){
       var name = $("#edit_name").val().trim();
       if(name == ""){
         app.msg("请输入名称", 1);
         return;
       }
-      app.edit("${pageContext.request.contextPath}/editMenu/menuEdit.htm", $('#editForm').serialize(), index);
+      app.edit("${pageContext.request.contextPath}/editMenu/editor.htm", $('#editForm').serialize(), index);
     });
   }
 
   function add(){
-    app.openDialog("${pageContext.request.contextPath}/addMenu/openAddMenu.htm", "新增菜单", 600, 0.3, function(index){
-      app.add("${pageContext.request.contextPath}/addMenu/menuAdd.htm", $('#addForm').serialize(), index);
+    app.openDialog("${pageContext.request.contextPath}/addMenu/open.html", "新增菜单", 600, 0.3, function(index){
+      app.add("${pageContext.request.contextPath}/addMenu/add.json", $('#addForm').serialize(), index);
     });
   }
 

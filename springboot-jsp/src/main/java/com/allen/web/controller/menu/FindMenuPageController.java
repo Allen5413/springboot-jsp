@@ -25,11 +25,11 @@ public class FindMenuPageController extends BaseController {
     @RequestMapping(value = "find")
     public String find(@RequestParam(value="name", required=false, defaultValue="") String name,
                                   HttpServletRequest request) throws Exception {
-        Map<String, String> params = new HashMap<String, String>();
-        params.put("name", StringUtil.isEmpty(name.trim()) ? "" : name.trim());
+        Map<String, Object> params = new HashMap<String, Object>();
+        params.put("name", StringUtil.isEmpty(name.trim()) ? "" : "%"+name.trim()+"%");
         PageInfo pageInfo = super.getPageInfo(request);
         Map<String, Boolean> sortMap = new HashMap<String, Boolean>();
-        sortMap.put("operateTime", false);
+        sortMap.put("id", true);
         pageInfo = findMenuPageService.find(pageInfo, params, sortMap);
         request.setAttribute("pageInfo", pageInfo);
         return "/basic/menu/menuList";

@@ -8,5 +8,5 @@ import java.util.Map;
  * Created by Allen on 2016/12/20.
  */
 public interface FindMenuPageService {
-    public PageInfo find(PageInfo pageInfo, Map<String, String> params, Map<String, Boolean> sortMap)throws Exception;
+    public PageInfo find(PageInfo pageInfo, Map<String, Object> params, Map<String, Boolean> sortMap)throws Exception;
 }

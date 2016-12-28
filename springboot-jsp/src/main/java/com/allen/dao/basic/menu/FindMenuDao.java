@@ -2,6 +2,7 @@ package com.allen.dao.basic.menu;
 
 import com.allen.dao.BaseQueryDao;
 import com.allen.dao.PageInfo;
+import com.allen.entity.basic.Menu;
 import org.springframework.stereotype.Service;
 
 import java.util.Map;
@@ -20,10 +21,22 @@ public class FindMenuDao extends BaseQueryDao{
      * @return
      * @throws Exception
      */
-    public PageInfo findPageByWhere(PageInfo pageInfo, Map<String, Object> paramsMap, Map<String, Boolean> sortMap)throws Exception{
-        String fileds = "*";
-        String[] tableNames = {"menu"};
+    public PageInfo findPage(PageInfo pageInfo, Map<String, Object> paramsMap, Map<String, Boolean> sortMap)throws Exception{
+        String[] tableNames = {"Menu"};
         String[] paramsIf = {"like"};
-        return super.findPageByNativeSql(pageInfo, fileds, tableNames, paramsMap, paramsIf, sortMap);
+        return super.findPageByJpal(pageInfo, tableNames, paramsMap, paramsIf, sortMap);
+    }
+
+    /**
+     * 通过名称查询
+     * @param paramsMap
+     * @return
+     * @throws Exception
+     */
+    public Menu findByName(Map<String, Object> paramsMap)throws Exception{
+        String fields = "m";
+        String[] tableNames = {"Menu m"};
+        String[] paramsIf = {"="};
+        return (Menu) super.findByHql(tableNames, fields, paramsMap, paramsIf, null, Menu.class);
     }
 }
