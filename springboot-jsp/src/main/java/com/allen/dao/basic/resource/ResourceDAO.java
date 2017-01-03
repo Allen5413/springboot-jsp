@@ -9,7 +9,7 @@ import java.util.List;
 /**
  * Created by Allen on 2016/12/15 0015.
  */
-public interface ResourceDAO extends CrudRepository<Resource, Long> {
+public interface ResourceDao extends CrudRepository<Resource, Long> {
 
     /**
      * 通过UserId查询一个用户所关联的资源

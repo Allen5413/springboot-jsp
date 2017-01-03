@@ -28,7 +28,7 @@ public class AddMenuController extends BaseController {
      */
     @RequestMapping(value = "open")
     public String open(){
-        return "basic/menu/menuAdd";
+        return "basic/menu/add";
     }
 
     /**

@@ -1,6 +1,6 @@
 package com.allen.service.basic.resource.impl;
 
-import com.allen.dao.basic.resource.ResourceDAO;
+import com.allen.dao.basic.resource.ResourceDao;
 import com.allen.entity.basic.Resource;
 import com.allen.service.basic.resource.FindResourceByUserIdService;
 import org.springframework.stereotype.Service;
@@ -14,7 +14,7 @@ import java.util.List;
 public class FindResourceByUserIdServiceImpl implements FindResourceByUserIdService {
 
     @javax.annotation.Resource
-    private ResourceDAO resourceDAO;
+    private ResourceDao resourceDAO;
 
     @Override
     public List<Resource> find(long userId) throws Exception {

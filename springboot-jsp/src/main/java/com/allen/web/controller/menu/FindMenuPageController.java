@@ -32,6 +32,6 @@ public class FindMenuPageController extends BaseController {
         sortMap.put("id", true);
         pageInfo = findMenuPageService.find(pageInfo, params, sortMap);
         request.setAttribute("pageInfo", pageInfo);
-        return "/basic/menu/menuList";
+        return "/basic/menu/page";
     }
 }

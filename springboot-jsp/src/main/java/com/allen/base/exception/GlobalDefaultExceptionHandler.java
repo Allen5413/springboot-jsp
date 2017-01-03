@@ -17,11 +17,13 @@ public class GlobalDefaultExceptionHandler {
 
     @ExceptionHandler(value = Exception.class)
     @ResponseBody
-    public ModelAndView defaultErrorHandler(HttpServletRequest req, Exception e)  {
+    public JSONObject defaultErrorHandler(HttpServletRequest req, Exception e)  {
+        JSONObject jsonObject = new JSONObject();
         //打印异常信息：
         e.printStackTrace();
-        ModelAndView modelAndView = new ModelAndView("/error");
-        return modelAndView;
+        jsonObject.put("state", 1);
+        jsonObject.put("msg", "程序出现了异常");
+        return jsonObject;
     }
 
     @ExceptionHandler(value = BusinessException.class)
