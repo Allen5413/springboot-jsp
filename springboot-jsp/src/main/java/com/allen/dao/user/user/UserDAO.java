@@ -7,7 +7,7 @@ import org.springframework.data.repository.CrudRepository;
 /**
  * Created by Allen on 2016/12/15.
  */
-public interface UserDAO extends CrudRepository<User, Long> {
+public interface UserDao extends CrudRepository<User, Long> {
 
     /**
      * 用户登录验证查询

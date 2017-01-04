@@ -1,6 +1,7 @@
 package com.allen.service.user.user.impl;
 
-import com.allen.dao.user.user.UserDAO;
+import com.allen.dao.user.user.FindUserDao;
+import com.allen.dao.user.user.UserDao;
 import com.allen.entity.user.User;
 import com.allen.service.user.user.LoginUserService;
 import org.springframework.stereotype.Service;
@@ -14,11 +15,11 @@ import javax.annotation.Resource;
 public class LoginUserServiceImpl implements LoginUserService {
 
     @Resource
-    private UserDAO userDAO;
+    private FindUserDao findUserDao;
 
     @Override
     public User login(String loginName, String pwd) throws Exception {
-        User user = userDAO.findByLoginNameAndPwd(loginName, pwd);
+        User user = findUserDao.findByLoginNameAndPwd(loginName, pwd);
         return user;
     }
 }
