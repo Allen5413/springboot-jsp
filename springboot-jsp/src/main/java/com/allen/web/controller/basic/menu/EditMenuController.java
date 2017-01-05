@@ -1,4 +1,4 @@
-package com.allen.web.controller.menu;
+package com.allen.web.controller.basic.menu;
 
 import com.alibaba.fastjson.JSONObject;
 import com.allen.entity.basic.Menu;

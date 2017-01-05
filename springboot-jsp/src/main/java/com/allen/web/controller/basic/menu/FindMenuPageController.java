@@ -1,4 +1,4 @@
-package com.allen.web.controller.menu;
+package com.allen.web.controller.basic.menu;
 
 import com.allen.dao.PageInfo;
 import com.allen.service.basic.menu.FindMenuPageService;

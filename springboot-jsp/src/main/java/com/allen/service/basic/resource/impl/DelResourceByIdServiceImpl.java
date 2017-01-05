@@ -1,4 +1,4 @@
-package com.allen.service.basic.menu.impl;
+package com.allen.service.basic.resource.impl;
 
 import com.allen.dao.basic.resource.ResourceDao;
 import com.allen.service.basic.resource.DelResourceByIdService;

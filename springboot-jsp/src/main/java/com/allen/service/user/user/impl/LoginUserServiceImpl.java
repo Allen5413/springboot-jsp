@@ -1,7 +1,6 @@
 package com.allen.service.user.user.impl;
 
 import com.allen.dao.user.user.FindUserDao;
-import com.allen.dao.user.user.UserDao;
 import com.allen.entity.user.User;
 import com.allen.service.user.user.LoginUserService;
 import org.springframework.stereotype.Service;

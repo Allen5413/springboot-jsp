@@ -1,4 +1,4 @@
-package com.allen.web.controller.resource;
+package com.allen.web.controller.user.user;
 
 import com.alibaba.fastjson.JSONObject;
 import com.allen.entity.basic.Resource;
@@ -19,9 +19,9 @@ import javax.servlet.http.HttpServletRequest;
  */
 @Controller
 @RequestMapping(value = "/addResource")
-public class AddResourceController extends BaseController {
+public class AddUserController extends BaseController {
 
-    private static Logger log = Logger.getLogger(AddResourceController.class);
+    private static Logger log = Logger.getLogger(AddUserController.class);
 
     @Autowired
     private AddResourceService addResourceService;
@@ -32,7 +32,7 @@ public class AddResourceController extends BaseController {
      */
     @RequestMapping(value = "open")
     public String open(HttpServletRequest request){
-        return "basic/resource/add";
+        return "user/user/add";
     }
 
     /**

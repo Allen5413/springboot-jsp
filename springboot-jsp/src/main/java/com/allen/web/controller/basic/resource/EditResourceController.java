@@ -1,4 +1,4 @@
-package com.allen.web.controller.resource;
+package com.allen.web.controller.basic.resource;
 
 import com.alibaba.fastjson.JSONObject;
 import com.allen.service.basic.resource.EditResourceService;

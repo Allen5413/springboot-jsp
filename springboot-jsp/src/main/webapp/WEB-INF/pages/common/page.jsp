@@ -23,6 +23,7 @@
   </li>
 </ul>
 <script>
+  $("select").selected();
   var obj = $("#page");
   var currentPage = Number("${pageInfo.currentPage}");
   var totalPage = Number("${pageInfo.totalPage}");

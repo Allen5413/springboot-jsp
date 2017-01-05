@@ -28,6 +28,8 @@ public class User {
     private Date operateTime = new Date();      //操作时间
     @Version
     private Integer version;                    //版本号，用于乐观锁
+    @Transient
+    private String stateStr;
 
     public Long getId() {
         return id;
@@ -123,5 +125,20 @@ public class User {
 
     public void setPwd(String pwd) {
         this.pwd = pwd;
+    }
+
+    public String getStateStr() {
+        switch (this.getState()){
+            case 1:
+                this.stateStr = "启用";
+                break;
+            case 2:
+                this.stateStr = "停用";
+                break;
+            default:
+                this.stateStr = "未知";
+                break;
+        }
+        return stateStr;
     }
 }

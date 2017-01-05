@@ -1,4 +1,4 @@
-package com.allen.web.controller.resource;
+package com.allen.web.controller.basic.resource;
 
 import com.allen.service.basic.resource.FindResourceByMenuIdService;
 import com.allen.web.controller.BaseController;
