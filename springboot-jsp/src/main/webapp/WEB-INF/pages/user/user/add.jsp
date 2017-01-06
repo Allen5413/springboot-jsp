@@ -28,8 +28,8 @@
   </div>
 
   <div class="am-g am-margin-top">
-    <div class="am-u-sm-2 am-text-right"><label >状态：</label></div>
-    <div class="am-u-sm-6">
+    <div class="am-u-sm-3 am-text-right"><label >状态：</label></div>
+    <div class="am-u-sm-4">
       <div class="am-btn-group" data-am-button="">
         <label class="am-btn am-btn-primary am-btn-s">
           <input type="radio" name="state" value="1"> 启用
@@ -39,7 +39,7 @@
         </label>
       </div>
     </div>
-    <div class="am-u-sm-4"></div>
+    <div class="am-u-sm-5"></div>
   </div>
 
   <div class="am-g am-margin-top-sm">
